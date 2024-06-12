@@ -44,9 +44,9 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
 
     // JUnit für Unit-Tests
-    testImplementation 'junit:junit:4.13.2'
+    testImplementation("junit:junit:4.13.2")
 
     // AndroidX Test Libraries für Instrumentation-Tests
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation("androidx.test.ext:junit:1.1.2")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
 }

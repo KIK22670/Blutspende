@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun getCompatibleBloodTypes(bloodType: String): String {
+    fun getCompatibleBloodTypes(bloodType: String): String {
         return when (bloodType) {
             "A+" -> "A+, A-, O+, O-"
             "A-" -> "A-, O-"

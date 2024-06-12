@@ -12,7 +12,7 @@
         android:text="Blutspende-Kompatibilität"
         android:textSize="24sp"
         android:layout_gravity="center"
-        android:marginBottom="20dp"/>
+        android:layout_marginBottom="20dp"/>
 
     <Spinner
         android:id="@+id/spinner_blood_type"

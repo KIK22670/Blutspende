@@ -1,4 +1,4 @@
-package com.example.bloodcompatibility
+package com.example.blutspendekompabilitaetsapp
 
 import android.os.Bundle
 import android.widget.*

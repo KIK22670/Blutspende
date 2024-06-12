@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/light_background">
 
     <TextView
         android:id="@+id/tv_title"
@@ -11,22 +12,35 @@
         android:layout_height="wrap_content"
         android:text="Blutspende-Kompatibilität"
         android:textSize="24sp"
+        android:textStyle="bold"
         android:layout_gravity="center"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/primary_text"/>
 
     <Spinner
         android:id="@+id/spinner_blood_type"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:entries="@array/blood_types"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:background="@drawable/spinner_background"
+        android:padding="8dp"/>
 
     <Button
         android:id="@+id/btn_check"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Kompatibilität prüfen"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:background="@color/button_background"
+        android:textColor="@color/white"
+        android:padding="12dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/divider"/>
 
     <TextView
         android:id="@+id/tv_result"
@@ -35,6 +49,7 @@
         android:text=""
         android:layout_marginTop="20dp"
         android:textSize="18sp"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:textColor="@color/secondary_text"/>
 
 </LinearLayout>

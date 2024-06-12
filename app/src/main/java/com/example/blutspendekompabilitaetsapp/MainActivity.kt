@@ -1,59 +1,41 @@
-package com.example.blutspendekompabilitaetsapp
+package com.example.bloodcompatibility
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
-import com.example.blutspendekompabilitaetsapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var spinnerBloodType: Spinner
+    private lateinit var buttonCheck: Button
+    private lateinit var textViewResult: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        spinnerBloodType = findViewById(R.id.spinner_blood_type)
+        buttonCheck = findViewById(R.id.btn_check)
+        textViewResult = findViewById(R.id.tv_result)
 
-        setSupportActionBar(binding.toolbar)
-
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController, appBarConfiguration)
-
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null)
-                    .setAnchorView(R.id.fab).show()
+        buttonCheck.setOnClickListener {
+            val selectedBloodType = spinnerBloodType.selectedItem.toString()
+            val compatibleBloodTypes = getCompatibleBloodTypes(selectedBloodType)
+            textViewResult.text = "Kompatible Blutgruppen: $compatibleBloodTypes"
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
+    private fun getCompatibleBloodTypes(bloodType: String): String {
+        return when (bloodType) {
+            "A+" -> "A+, A-, O+, O-"
+            "A-" -> "A-, O-"
+            "B+" -> "B+, B-, O+, O-"
+            "B-" -> "B-, O-"
+            "AB+" -> "Alle Blutgruppen"
+            "AB-" -> "AB-, A-, B-, O-"
+            "O+" -> "O+, O-"
+            "O-" -> "O-"
+            else -> "Unbekannt"
         }
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
     }
 }
